@@ -13,41 +13,62 @@ const TaskCard = ({ task, handleDelete, handleEdit, openPopup }) => {
         }),
     }), [task]);
 
+    const buttonStyle = {
+        background: 'black',
+        height: '34px',
+        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
+        marginTop: '-50px',
+        marginBottom: '10px',
+        border:'none',
+        outline: 'none',
+      };
+      
+      const iconStyle = {
+        marginBottom: '15px',
+        color: 'white',
+      };
+      const cardBodyStyle = {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
+        whiteSpace: 'normal',
+        overflow: 'hidden',
+        height: 'auto',
+      };
     return (
         <Card ref={drag} className={`mb-2 ${isDragging ? 'dragging' : ''} animated-card shadow-sm`}>
-            <Card.Body>
-                <Card.Title className="d-flex justify-content-between align-items-center">
-                    {task.title}
-                    <div>
+            <Card.Body style={cardBodyStyle}>
+                {task.title}
+            </Card.Body>
+            <Card.Footer className="">
+            <small>Created on {new Date(task.date).toLocaleDateString()}</small>
+                <div className='float-start mt-1'>
                         <Button
-                            variant="info"
                             onClick={() => openPopup(task)}
-                            className="btn-icon p-2 m-1"
+                             className="btn-icon p-2 m-1"
+                            style={buttonStyle}
                             aria-label="View"
                         >
-                            <FaEye />
+                            <FaEye style={iconStyle} />
                         </Button>
                         <Button
-                            variant="warning"
                             onClick={() => handleEdit(task._id)}
                             className="btn-icon p-2 m-1"
+                            style={buttonStyle}
                             aria-label="Edit"
                         >
-                            <FaEdit />
+                            <FaEdit style={iconStyle} />
                         </Button>
                         <Button
-                            variant="danger"
                             onClick={() => handleDelete(task._id)}
                             className="btn-icon p-2 m-1"
+                            style={buttonStyle}
                             aria-label="Delete"
                         >
-                            <FaTrash />
+                            <FaTrash style={iconStyle} />
                         </Button>
                     </div>
-                </Card.Title>
-            </Card.Body>
-            <Card.Footer className="text-muted">
-                <small>Created on {new Date(task.date).toLocaleDateString()}</small>
             </Card.Footer>
         </Card>
     );

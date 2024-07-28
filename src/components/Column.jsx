@@ -14,7 +14,7 @@ const Column = ({ status, taskCounts, tasks, moveTask, handleDelete, handleEdit,
         <div ref={drop} className="column" style={{ background: '#ededed', padding: '10px', minHeight: '400px', height: 'auto', borderRadius: '6px' }}>
             <div className="d-flex align-items-center mb-2">
                 <span className="column-title">{status}</span>
-                <Badge pill bg={taskCounts[status] > 0 ? 'primary' : 'secondary'} style={{marginLeft:'3px', marginTop:'-10px'}}>
+                <Badge pill bg={taskCounts[status] > 0 ? 'primary' : 'secondary'} style={{marginLeft:'6px'}}>
                     {taskCounts[status] || '0'}
                 </Badge>
             </div>
