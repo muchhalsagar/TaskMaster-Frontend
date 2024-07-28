@@ -1,0 +1,58 @@
+.scroll-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 15px; /* to avoid the scrollbar overlapping the content */
+}
+
+.scroll-container .col {
+    flex: 0 0 20%; /* 20% to fit 5 columns in a row */
+    max-width: 20%;
+}
+.column {
+    margin-bottom: 20px;
+}
+
+.task-card {
+    transition: transform 0.2s ease-in-out;
+}
+
+.task-card:hover {
+    transform: scale(1.05);
+}
+
+.popup-content {
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.popup-overlay {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.popup-header h2 {
+    margin: 0;
+}
+
+.popup-body {
+    margin-bottom: 20px;
+}
+.animated-card {
+    transition: transform 0.3s ease-in-out;
+}
+
+.animated-card:hover {
+    transform: scale(1.05);
+}
+
+.dragging {
+    opacity: 0.5;
+}
