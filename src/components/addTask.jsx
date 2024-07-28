@@ -13,7 +13,7 @@ const AddTask = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('https://taskmaster-backend-w4e5.onrender.com/api/task', {
+            const response = await axios.post('http://localhost:5000/api/task', {
                 title,
                 description,
                 status,

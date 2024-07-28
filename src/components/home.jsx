@@ -24,7 +24,7 @@ const Home = () => {
     useEffect(() => {
         const fetchTasks = async () => {
             try {
-                const response = await axios.get('https://taskmaster-backend-w4e5.onrender.com/api/task');
+                const response = await axios.get('http://localhost:5000/api/task');
                 setTasks(response.data.tasks);
                 setLoading(false);
             } catch (err) {
@@ -56,11 +56,11 @@ const Home = () => {
     useEffect(() => {
         const searchTask = async () => {
             if (searchTerm.trim() === '') {
-                const res = await axios.get('https://taskmaster-backend-w4e5.onrender.com/api/task');
+                const res = await axios.get('http://localhost:5000/api/task');
                 setTasks(res.data.tasks);
             } else {
                 try {
-                    const res = await axios.get(`https://taskmaster-backend-w4e5.onrender.com/api/search?term=${searchTerm}`);
+                    const res = await axios.get(`http://localhost:5000/api/search?term=${searchTerm}`);
                     setTasks(res.data.tasks);
                 } catch (err) {
                     console.error(err.response.data);
@@ -73,11 +73,11 @@ const Home = () => {
     useEffect(() => {
         const FilterTask = async () => {
             if (status.trim() === '') {
-                const res = await axios.get('https://taskmaster-backend-w4e5.onrender.com/api/task');
+                const res = await axios.get('http://localhost:5000/api/task');
                 setTasks(res.data.tasks);
             } else {
                 try {
-                    const res = await axios.get(`https://taskmaster-backend-w4e5.onrender.com/api/getTaskByStatus/${status}`);
+                    const res = await axios.get(`http://localhost:5000/api/getTaskByStatus/${status}`);
                     setTasks(res.data.tasks);
                 } catch (err) {
                     console.error(err.response.data);
@@ -93,7 +93,7 @@ const Home = () => {
                 const statuses = STATUS_ORDER;
                 const counts = {};
                 for (const status of statuses) {
-                    const response = await axios.get(`https://taskmaster-backend-w4e5.onrender.com/api/countTaskByStatus/${status}/${searchTerm}`);
+                    const response = await axios.get(`http://localhost:5000/api/countTaskByStatus/${status}/${searchTerm}`);
                     counts[status] = response.data.count;
                 }
                 setTaskCounts(counts);
@@ -116,7 +116,7 @@ const Home = () => {
             task._id === taskId ? { ...task, status: newStatus } : task
         );
         try {
-            await axios.put(`https://taskmaster-backend-w4e5.onrender.com/api/updateStatusById/${taskId}`, { status: newStatus });
+            await axios.put(`http://localhost:5000/api/updateStatusById/${taskId}`, { status: newStatus });
             setTasks(updatedTasks);
         } catch (error) {
             console.error('Error updating task status:', error);
@@ -125,7 +125,7 @@ const Home = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`https://taskmaster-backend-w4e5.onrender.com/api/deleteTaskById/${id}`);
+            await axios.delete(`http://localhost:5000/api/deleteTaskById/${id}`);
             alert('Task deleted successfully...');
             setTasks(tasks.filter(task => task._id !== id));
         } catch (err) {

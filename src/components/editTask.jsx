@@ -14,7 +14,7 @@ const EditTask = () => {
     useEffect(() => {
         const fetchTask = async () => {
             try {
-                const response = await axios.get(`https://taskmaster-backend-w4e5.onrender.com/api/task/${id}`);
+                const response = await axios.get(`http://localhost:5000/api/task/${id}`);
                 const taskData = response.data.task;
                 setTitle(taskData.title || '');
                 setStatus(taskData.status || '');
@@ -30,7 +30,7 @@ const EditTask = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            await axios.put(`https://taskmaster-backend-w4e5.onrender.com/api/updateTaskById/${id}`, {
+            await axios.put(`http://localhost:5000/api/updateTaskById/${id}`, {
                 title,
                 status,
                 description,
