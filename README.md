@@ -1,5 +1,5 @@
 # TaskMaster - Frontend
-<img src='./src/images/TaskMaster-img.png' width='75%' height='75%'> 
+<img src='./src/images/TaskMaster-img.png' width='100%' height='75%'> 
 Welcome to the TaskMaster - Frontend repository! This is a React application built with Vite, designed for managing tasks efficiently.
 
 ## Installation
