@@ -92,9 +92,14 @@ const Home = () => {
             try {
                 const statuses = STATUS_ORDER;
                 const counts = {};
-                for (const status of statuses) {
+                if (status) {
                     const response = await axios.get(`http://localhost:5000/api/countTaskByStatus/${status}/${searchTerm}`);
                     counts[status] = response.data.count;
+                } else {
+                    for (const status of statuses) {
+                        const response = await axios.get(`http://localhost:5000/api/countTaskByStatus/${status}/${searchTerm}`);
+                        counts[status] = response.data.count;
+                    }    
                 }
                 setTaskCounts(counts);
             } catch (error) {
@@ -102,7 +107,7 @@ const Home = () => {
             }
         };
         fetchTaskCounts();
-    }, [tasks, searchTerm]);
+    }, [tasks, searchTerm, status]);
 
     const moveTask = useCallback(async (taskId, newStatus) => {
         const task = tasks.find(task => task._id === taskId);
